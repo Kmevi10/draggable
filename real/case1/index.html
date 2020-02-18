@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Caso 1</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+        
+        li {
+            margin: 5px;
+            padding: 5px;
+            width: 150px;
+        }
+        
+        .lista {
+            background-color: grey;
+        }
+        
+        div {
+            border: 2px solid black;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#lista").sortable({
+                revert: true
+            });
+            $("ul, li").disableSelection();
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>Ordena las asignaturas según tu preferencia</li>
+        </ul>
+
+        <ul id="lista">
+            <li class="lista">Entorno servidor</li>
+            <li class="lista">Entorno cliente</li>
+            <li class="lista">Interfaz web</li>
+            <li class="lista">Empresa</li>
+            <li class="lista">Inglés</li>
+            <li class="lista">Despliegue aplicaciones</li>
+
+        </ul>
+    </div>
+
+</body>
+
+</html>

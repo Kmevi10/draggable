@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <title>Constrain</title>
+    <style>
+        #containment-wrapper {
+            margin: auto;
+            width: 50%;
+            height: 300px;
+            border: 2px solid #ccc;
+            padding: 10px;
+        }
+        
+        #draggable3 {
+            top: 100px;
+            left: 45%;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script>
+        $(function() {
+            $("#draggable3").draggable({
+                containment: "#containment-wrapper",
+                scroll: false
+            });
+            /*$("#draggable3").draggable({
+                cursorAt: {
+                    bottom: 0,
+                    right: 0
+                }
+            });*/
+        });
+    </script>
+</head>
+
+<body>
+    <div id="containment-wrapper">
+        <div id="draggable3" class="draggable ui-widget-content">
+            <p>SACAME RATA</p>
+        </div>
+    </div>
+</body>
+
+</html

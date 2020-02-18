@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Draggable - Events</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        #draggable {
+            border: 1px solid rgb(197, 197, 197);
+            width: 16em;
+            padding: 0 1em;
+        }
+        
+        #draggable ul li {
+            margin: 1em 0;
+            padding: 0.5em 0;
+        }
+        
+        * html #draggable ul li {
+            height: 1%;
+        }
+        
+        #draggable ul li span.ui-icon {
+            float: left;
+        }
+        
+        #draggable ul li span.count {
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            var $comienzo = $("#comenzar"),
+                $recorrido = $("#arrastrar"),
+                $parada = $("#parar"),
+                contador_global = [0, 0, 0];
+
+            $("#draggable").draggable({
+                start: function() {
+                    contador_global[0]++;
+                    contadorDeEstado($comienzo, contador_global[0]);
+                },
+                drag: function() {
+                    contador_global[1]++;
+                    contadorDeEstado($recorrido, contador_global[1]);
+                },
+                stop: function() {
+                    contador_global[2]++;
+                    contadorDeEstado($parada, contador_global[2]);
+                }
+            });
+
+            function contadorDeEstado($contador, inicio_contador) {
+                // first update the status visually...
+                if (!$contador.hasClass("ui-state-hover")) {
+                    $contador.addClass("ui-state-hover")
+                        .siblings().removeClass("ui-state-hover");
+                }
+                // ...then update the numbers
+                $("span.count", $contador).text(inicio_contador);
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+    <div id="draggable">
+
+        <p>Mueve para observar los eventos.</p>
+
+        <ul>
+            <li id="comenzar"><span class="count">0</span> veces has empezado.</li>
+            <li id="arrastrar"><span class="count">0</span>px recorrido.</li>
+            <li id="parar"><span class="count">0</span> veces parado.</li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>
